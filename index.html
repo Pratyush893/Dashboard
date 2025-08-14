@@ -1,0 +1,177 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<!--   <link rel="stylesheet" href="styles.css"> -->
+  <style>
+    
+/* styles.css */
+/* Light mode variables */
+:root {
+  --header-footer-bg: #22c55e; /* Green */
+  --sidebar-bg: #f3f3f3;
+  --main-bg: #fff;
+  --sidebar-link: #7c3aed;
+  --text: #222;
+}
+
+/* Dark mode variables */
+body.dark {
+  --header-footer-bg: #222;
+  --sidebar-bg: #23272f;
+  --main-bg: #181a1b;
+  --sidebar-link: #a78bfa;
+  --text: #e8e6e3;
+}
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background: var(--main-bg);
+  color: var(--text);
+  transition: background 0.3s, color 0.3s;
+}
+
+.dashboard {
+  display: grid;
+  grid-template-areas:
+    "header header"
+    "sidebar main"
+    "footer footer";
+  grid-template-columns: 200px 1fr;
+  grid-template-rows: 60px 1fr 40px;
+  min-height: 100vh;
+}
+
+header {
+  grid-area: header;
+  background: var(--header-footer-bg);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  font-size: 1.3em;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.theme-switch {
+  display: flex;
+  align-items: center;
+  font-size: 1em;
+  color: #fff;
+  cursor: pointer;
+  user-select: none;
+}
+.theme-switch input[type="checkbox"] {
+  margin-right: 8px;
+  accent-color: #7c3aed;
+  width: 18px;
+  height: 18px;
+}
+
+nav {
+  grid-area: sidebar;
+  background: var(--sidebar-bg);
+  display: flex;
+  flex-direction: column;
+  padding: 30px 0 0 0;
+  align-items: stretch;
+  min-width: 0;
+}
+nav a {
+  color: var(--sidebar-link);
+  text-decoration: none;
+  font-weight: bold;
+  padding: 14px 32px;
+  margin-bottom: 8px;
+  border-radius: 4px 0 0 4px;
+  transition: background 0.2s;
+}
+nav a:hover {
+  background: #e0e7ff;
+}
+
+main {
+  grid-area: main;
+  background: var(--main-bg);
+  padding: 40px 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+}
+main h2 {
+  margin-top: 0;
+  font-size: 2em;
+  font-weight: 600;
+}
+main p {
+  font-size: 1.1em;
+  color: var(--text);
+}
+
+footer {
+  grid-area: footer;
+  background: var(--header-footer-bg);
+  color: #fff;
+  text-align: center;
+  line-height: 40px;
+  font-size: 1em;
+  letter-spacing: 1px;
+}
+
+/* Responsive for small screens */
+@media (max-width: 700px) {
+  .dashboard {
+    grid-template-areas:
+      "header"
+      "main"
+      "sidebar"
+      "footer";
+    grid-template-columns: 1fr;
+    grid-template-rows: 60px 1fr auto 40px;
+  }
+  nav {
+    flex-direction: row;
+    justify-content: center;
+    padding: 10px 0;
+  }
+  nav a {
+    margin: 0 8px 0 0;
+    padding: 10px 16px;
+    border-radius: 4px;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <div class="dashboard">
+    <header>
+      Admin Dashboard
+      <label class="theme-switch">
+        <input type="checkbox" id="theme-toggle">
+        Dark Mode
+      </label>
+    </header>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Users</a>
+      <a href="#">Settings</a>
+    </nav>
+    <main>
+      <h2>Welcome, Admin!</h2>
+      <p>This is the main content area. Add charts, tables, or reports here.</p>
+    </main>
+    <footer>
+      © 2025 Admin Panel
+    </footer>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
